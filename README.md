@@ -1,126 +1,132 @@
 # YouTube Sub Tracker
 
-追踪 AI/LLM 相关 YouTube 频道的视频，自动下载字幕并展示。
+Track AI/LLM-related YouTube channels with automated subtitle downloading and analysis.
 
 ## 📊 Data View
 
 - **GitHub Pages**: https://fireowl-sw.github.io/youtube-sub-tracker/
 - **Feishu Spreadsheet**: [LLM YouTube landscape tracker](https://kbb6445k2b.feishu.cn/base/VeGEbUUANarJn1sxGfwcDgnNnEg)
 
-## 追踪频道
+## Tracked Channels
 
-- **Andrej Karpathy** — LLM、Transformer、GPT 实现
-- **3Blue1Brown** — 数学原理、神经网络可视化
-- **Two Minute Papers** — AI 前沿研究解读
+| Channel | Focus |
+|---------|-------|
+| **Andrej Karpathy** | LLM, Transformer, GPT Implementation |
+| **3Blue1Brown** | Math Fundamentals, Neural Network Visualization |
+| **Two Minute Papers** | AI Research Frontiers |
 
-## 功能
+## Features
 
-- ✅ RSS 订阅追踪新视频
-- ✅ 自动下载英文字幕
-- ✅ AI 主题分类和关联分析
-- ✅ 可搜索/过滤的视频库
-- ✅ 完整字幕表格展示
-- 🤖 **OpenClaw 自动化** — 定时检测更新、自动同步飞书
+- ✅ RSS subscription tracking for new videos
+- ✅ Automatic English subtitle download
+- ✅ AI-powered topic categorization and relationship analysis
+- ✅ Searchable/filterable video library
+- ✅ Complete transcript table display
+- 🤖 **OpenClaw Automation** — Scheduled update detection, auto-sync to Feishu
 
-## 本地运行
+## Local Run
 
 ```bash
-# 1. 克隆项目
-git clone <repo-url>
+# 1. Clone project
+git clone https://github.com/fireowl-sw/youtube-sub-tracker.git
 cd youtube-sub-tracker
 
-# 2. 启动 HTTP 服务器
+# 2. Start HTTP server
 python3 -m http.server 8080
 
-# 3. 浏览器访问
+# 3. Open in browser
 open http://localhost:8080
 ```
 
-## 添加新视频
+## Add New Video
 
 ```bash
 python3 add_video.py "https://www.youtube.com/watch?v=VIDEO_ID"
 ```
 
-需要安装 `yt-dlp` 并确保浏览器已登录 YouTube。
+Requires `yt-dlp` installation.
 
 ## 🤖 Automation (OpenClaw)
 
-本项目集成了 **OpenClaw** 实现全自动化：
+This project integrates **OpenClaw** for full automation:
 
-- **定时检测**: 每天 08:00、14:00、20:00（香港时区）自动检查频道更新
-- **自动处理**: 发现新视频后自动下载字幕、更新数据
-- **自动推送**: 更新后自动推送到 GitHub Pages
-- **飞书同步**: 自动同步到 [Feishu Spreadsheet](https://kbb6445k2b.feishu.cn/base/VeGEbUUANarJn1sxGfwcDgnNnEg)
-- **消息通知**: 飞书私聊通知更新结果
+- **Scheduled Detection**: Auto-check channel updates at 08:00, 14:00, 20:00 (Hong Kong Time)
+- **Auto Processing**: Download subtitles and update data when new videos found
+- **Auto Push**: Deploy to GitHub Pages after updates
+- **Feishu Sync**: Auto-sync to [Feishu Spreadsheet](https://kbb6445k2b.feishu.cn/base/VeGEbUUANarJn1sxGfwcDgnNnEg)
+- **Notification**: Feishu private message with update results
 
 ### 📥 Data Collection
 
 ```
-YouTube RSS Feed → check_updates.py → 新视频检测
+YouTube RSS Feed → check_updates.py → New video detection
                                         ↓
-                              yt-dlp 字幕下载
+                              yt-dlp subtitle download
                                         ↓
-                              videos.json 存储
+                              videos.json storage
                                         ↓
                     ┌──────────────────┴──────────────────┐
                     ↓                                     ↓
             GitHub Pages                          Feishu Spreadsheet
-            (HTML 展示)                           (多维表格)
+            (HTML Display)                      (Multi-dimensional Table)
 ```
 
-**数据流说明：**
+**Data Flow:**
 
-1. **RSS 订阅**：每小时检查 YouTube RSS feed，获取最新视频信息
-2. **字幕下载**：使用 `yt-dlp` 下载英文字幕（SRT 格式）
-3. **数据解析**：SRT 转换为 JSON 格式的 transcript 数组
-4. **AI 分析**：基于字幕内容生成主题分类和内容摘要
+1. **RSS Subscription**: Check YouTube RSS feed hourly for latest videos
+2. **Subtitle Download**: Use `yt-dlp` to download English subtitles (SRT format)
+3. **Data Parsing**: Convert SRT to JSON transcript array
+4. **AI Analysis**: Generate topic categorization and content summary from transcripts
 
 ### 📊 Summary Generation
 
-每个视频包含以下信息：
+Each video contains the following information:
 
-| 字段 | 说明 | 来源 |
-|------|------|------|
-| Video Title | 视频标题 | YouTube RSS |
-| Primary Topic | 主主题 | AI 分析字幕 |
-| Specific Topics | 具体话题 | AI 分析字幕 |
-| Content Summary | 内容摘要 | AI 分析字幕 |
-| Related Content | 关联视频 | 交叉分析 |
-| Transcript | 完整字幕 | yt-dlp 下载 |
+| Field | Description | Source |
+|------|-------------|--------|
+| Video Title | Video title | YouTube RSS |
+| Primary Topic | Main topic | AI transcript analysis |
+| Specific Topics | Specific topics | AI transcript analysis |
+| Content Summary | Content summary | AI transcript analysis |
+| Related Content | Related videos | Cross-analysis |
+| Transcript | Full subtitle | yt-dlp download |
 
 ### 🔄 Keeping Feishu Updated
 
-飞书表格自动同步流程：
+Feishu spreadsheet auto-sync workflow:
 
 ```
-定时任务触发 → 检测新视频 → 下载字幕 → 更新 videos.json
-                                              ↓
-                              获取新视频列表
-                                              ↓
-                              lark-cli 写入飞书表格
-                                              ↓
-                              飞书私聊通知用户
+Scheduled task → Detect new videos → Download subtitles → Update videos.json
+                                                         ↓
+                                              Get new video list
+                                                         ↓
+                                        lark-cli write to Feishu
+                                                         ↓
+                                        Feishu notify user
 ```
 
-**同步字段顺序：**
+**Sync field order:**
 Video Title → Video Link → Channel Name → Speaker Name → Primary Topic → Specific Topics → Content Summary → Related Channel → Related Topic → Topic Connection → Transcript URL
 
-## 文件结构
+## File Structure
 
 ```
-├── index.html          # 主页面（自包含）
-├── videos.json         # 视频数据库
-├── subscriptions.json  # RSS 订阅配置
-├── add_video.py        # 添加新视频
-├── check_updates.py    # 检查更新
-└── subtitles/          # 字幕文件（.gitignore）
+├── index.html          # Main page (self-contained)
+├── videos.json         # Video database
+├── subscriptions.json  # RSS subscription config
+├── add_video.py        # Add new video
+├── check_updates.py    # Check for updates
+└── subtitles/          # Subtitle files (.gitignore)
 ```
 
-## GitHub Pages
+## License
 
-直接访问 `https://<username>.github.io/<repo>/` 即可查看。
+MIT License - see [LICENSE](LICENSE) file for details.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
 
-_项目使用 Claude Code 构建_
+_Built with Claude Code_
