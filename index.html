@@ -724,14 +724,7 @@
                 const relItems = video.related.map(rel => {
                     const types = (rel.types || [])
                         .map(t => {
-                            const typeMap = {
-                                '互补': 'Complementary',
-                                '延续': 'Continuation',
-                                '一致': 'Consistent',
-                                '对立': 'Contrasting',
-                                '深入': 'Deep Dive'
-                            };
-                            const enType = typeMap[t] || t;
+                            const enType = t;
                             return `<span class="connection-type type-${enType}">${enType}</span>`;
                         })
                         .join('');
