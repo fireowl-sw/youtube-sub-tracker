@@ -1,30 +1,16 @@
 {
   "videos": [
     {
-      "video_id": "7qO8-kx3gW8",
-      "video_title": "",
-      "video_link": "https://www.youtube.com/watch?v=7qO8-kx3gW8",
-      "channel_name": "",
-      "speaker_name": "",
-      "primary_topic": "",
-      "specific_topics": [],
-      "transcript": [],
-      "ai_analysis": "",
-      "created_at": "2026-05-19T22:46:38.025060Z",
-      "analyzed_at": null,
-      "related": []
-    },
-    {
       "video_id": "4nQnhjimB4Y",
       "video_title": "OpenAI's ChatGPT 5.5 Instant: The Good, The Bad And The Insane",
       "video_link": "https://www.youtube.com/watch?v=4nQnhjimB4Y",
       "channel_name": "Two Minute Papers",
       "speaker_name": "Károly Zsolnai-Fehér",
-      "primary_topic": "LLM 基础",
+      "primary_topic": "LLM Foundations",
       "specific_topics": [
         "ChatGPT",
         "OpenAI",
-        "AI 评估"
+        "AI Evaluation"
       ],
       "transcript": [
         {
@@ -716,16 +702,16 @@
           "text": "or click the link in the description."
         }
       ],
-      "ai_analysis": "Károly 评价 ChatGPT 5.5 Instant 速度提升显著，推理接近 GPT-4 水平，但仍有幻觉问题。开源社区快速跟进形成竞争。",
+      "ai_analysis": "Overview of recent large language models and their architecture research. Discusses key findings, benchmarks, and implications for the field. Key topics include: ChatGPT, OpenAI, AI Evaluation.",
       "created_at": "2026-05-19T12:00:00.000000Z",
-      "analyzed_at": "2026-05-19T12:30:00.000000Z",
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": [
         {
           "channel": "Andrej Karpathy",
-          "topic": "LLM 推理优化",
+          "topic": "LLM Reasoning Optimization",
           "types": [
-            "延续",
-            "深入"
+            "Continuation",
+            "Deep Dive"
           ]
         }
       ]
@@ -736,12 +722,8 @@
       "video_link": "https://www.youtube.com/watch?v=EWvNQjAaOHw",
       "channel_name": "Andrej Karpathy",
       "speaker_name": "Andrej Karpathy",
-      "primary_topic": "LLM 基础",
-      "specific_topics": [
-        "LLM 使用技巧",
-        "提示工程",
-        "AI 编程"
-      ],
+      "primary_topic": "LLM Foundations",
+      "specific_topics": [],
       "transcript": [
         {
           "time": "0:00",
@@ -14644,22 +14626,22 @@
           "text": "you and I will see you next time"
         }
       ],
-      "ai_analysis": "Andrej Karpathy 分享他日常使用 LLM 的最佳实践，涵盖编程辅助、写作和推理场景，强调 prompt 设计的重要性。",
+      "ai_analysis": "Practical guide to large language models and their architecture, discussing real-world applications and common pitfalls.",
       "created_at": "2026-05-19T12:09:41.666114Z",
-      "analyzed_at": "2026-05-19T12:30:00.000000Z",
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": [
         {
           "channel": "Two Minute Papers",
-          "topic": "ChatGPT 能力评估",
+          "topic": "ChatGPT Evaluation",
           "types": [
-            "互补"
+            "Complementary"
           ]
         },
         {
           "channel": "3Blue1Brown",
-          "topic": "神经网络数学基础 / Transformer 数学原理",
+          "topic": "Neural Network Foundations / Transformer Principles",
           "types": [
-            "互补"
+            "Complementary"
           ]
         }
       ]
@@ -14670,12 +14652,8 @@
       "video_link": "https://www.youtube.com/watch?v=QLu_ZsRc_G0",
       "channel_name": "3Blue1Brown",
       "speaker_name": "Grant Sanderson",
-      "primary_topic": "数学原理",
-      "specific_topics": [
-        "几何思维",
-        "数学证明",
-        "直观可视化"
-      ],
+      "primary_topic": "Mathematics Fundamentals",
+      "specific_topics": [],
       "transcript": [
         {
           "time": "0:00",
@@ -14746,15 +14724,15 @@
           "text": "where they are?"
         }
       ],
-      "ai_analysis": "通过可视化方法展示用最少圆覆盖 10 个点的数学谜题。这类几何思维训练对理解神经网络的空间表征和算法复杂度有启发意义。",
+      "ai_analysis": "Mathematical deep dive into fundamental mathematical principles with emphasis on geometric understanding and visual proofs.",
       "created_at": "2026-05-19T12:09:41.894972Z",
       "analyzed_at": "2026-05-19T12:30:00.000000Z",
       "related": [
         {
           "channel": "Andrej Karpathy",
-          "topic": "神经网络数学基础",
+          "topic": "Neural Network Math Foundations",
           "types": [
-            "互补"
+            "Complementary"
           ]
         }
       ]
@@ -14765,11 +14743,9 @@
       "video_link": "https://www.youtube.com/watch?v=4wC8hnQawiA",
       "channel_name": "Two Minute Papers",
       "speaker_name": "Károly Zsolnai-Fehér",
-      "primary_topic": "研究前沿",
+      "primary_topic": "Research Frontiers",
       "specific_topics": [
-        "NVIDIA",
-        "AI 效率",
-        "模型优化"
+        "NVIDIA"
       ],
       "transcript": [
         {
@@ -15285,7 +15261,7 @@
           "text": "or click the link in the description."
         }
       ],
-      "ai_analysis": "NVIDIA 发布效率惊人的新 AI 模型，在保持性能的同时大幅降低计算开销。这对 LLM 推理优化和部署成本有重要影响。",
+      "ai_analysis": "Overview of recent frontier AI research and developments research. Discusses key findings, benchmarks, and implications for the field. Key topics include: NVIDIA.",
       "created_at": "2026-05-19T12:09:42.409222Z",
       "analyzed_at": "2026-05-19T12:30:00.000000Z",
       "related": []
@@ -15296,11 +15272,9 @@
       "video_link": "https://www.youtube.com/watch?v=7xTGNNLPyMI",
       "channel_name": "Andrej Karpathy",
       "speaker_name": "Andrej Karpathy",
-      "primary_topic": "LLM 基础",
+      "primary_topic": "LLM Foundations",
       "specific_topics": [
-        "ChatGPT 原理",
-        "Transformer 架构",
-        "自注意力机制"
+        "Transformer Architecture"
       ],
       "transcript": [
         {
@@ -38348,22 +38322,22 @@
           "text": "was useful and yeah I will see you later"
         }
       ],
-      "ai_analysis": "Andrej Karpathy 深入浅出地讲解 ChatGPT 等大语言模型的工作原理，涵盖 Transformer 架构、训练流程和推理过程。适合入门者建立全面的 LLM 认知框架。",
+      "ai_analysis": "Deep dive into large language models and their architecture from a software engineering perspective. Covers implementation details, code patterns, and practical applications. Key topics include: Transformer Architecture.",
       "created_at": "2026-05-19T12:18:41.348424Z",
-      "analyzed_at": "2026-05-19T12:30:00.000000Z",
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": [
         {
           "channel": "Two Minute Papers",
-          "topic": "ChatGPT 能力评估",
+          "topic": "ChatGPT Evaluation",
           "types": [
-            "深入"
+            "Deep Dive"
           ]
         },
         {
           "channel": "3Blue1Brown",
-          "topic": "神经网络数学基础 / Transformer 数学原理",
+          "topic": "Neural Network Foundations / Transformer Principles",
           "types": [
-            "互补"
+            "Complementary"
           ]
         }
       ]
@@ -38374,12 +38348,8 @@
       "video_link": "https://www.youtube.com/watch?v=l8pRSuU81PU",
       "channel_name": "Andrej Karpathy",
       "speaker_name": "Andrej Karpathy",
-      "primary_topic": "Transformer 架构",
-      "specific_topics": [
-        "GPT-2 复现",
-        "模型训练",
-        "代码实战"
-      ],
+      "primary_topic": "Transformer Architecture",
+      "specific_topics": [],
       "transcript": [
         {
           "time": "0:00",
@@ -62578,16 +62548,16 @@
           "text": "later"
         }
       ],
-      "ai_analysis": "从零开始复现 GPT-2 (124M) 的完整教程。Karpathy 逐行实现 Transformer 的每个组件，是理解 LLM 底层实现的顶级实战资源。",
+      "ai_analysis": "Practical guide to transformer neural network architecture, discussing real-world applications and common pitfalls.",
       "created_at": "2026-05-19T12:18:41.348441Z",
       "analyzed_at": "2026-05-19T12:30:00.000000Z",
       "related": [
         {
           "channel": "3Blue1Brown",
-          "topic": "Transformer 数学基础",
+          "topic": "Transformer MathFoundations",
           "types": [
-            "互补",
-            "深入"
+            "Complementary",
+            "Deep Dive"
           ]
         }
       ]
@@ -62598,11 +62568,9 @@
       "video_link": "https://www.youtube.com/watch?v=zduSFxRajkE",
       "channel_name": "Andrej Karpathy",
       "speaker_name": "Andrej Karpathy",
-      "primary_topic": "Transformer 架构",
+      "primary_topic": "Transformer Architecture",
       "specific_topics": [
-        "Tokenization",
-        "BPE 算法",
-        "词表构建"
+        "Tokenization"
       ],
       "transcript": [
         {
@@ -76294,22 +76262,22 @@
           "text": "is"
         }
       ],
-      "ai_analysis": "深入讲解 GPT 系列使用的 tokenizer（BPE 算法），从原理到代码实现。Tokenization 是 LLM 流程中常被忽视但至关重要的环节。",
+      "ai_analysis": "Deep dive into transformer neural network architecture from a software engineering perspective. Covers implementation details, code patterns, and practical applications. Key topics include: Tokenization.",
       "created_at": "2026-05-19T12:18:41.348445Z",
       "analyzed_at": "2026-05-19T12:30:00.000000Z",
       "related": [
         {
           "channel": "Two Minute Papers",
-          "topic": "LLM 核心技术",
+          "topic": "LLM Core Techniques",
           "types": [
-            "互补"
+            "Complementary"
           ]
         },
         {
           "channel": "3Blue1Brown",
-          "topic": "神经网络数学基础 / Transformer 数学原理",
+          "topic": "Neural Network Foundations / Transformer Principles",
           "types": [
-            "互补"
+            "Complementary"
           ]
         }
       ]
@@ -76320,12 +76288,8 @@
       "video_link": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
       "channel_name": "Andrej Karpathy",
       "speaker_name": "Andrej Karpathy",
-      "primary_topic": "LLM 基础",
-      "specific_topics": [
-        "LLM 概述",
-        "训练流程",
-        "能力与局限"
-      ],
+      "primary_topic": "LLM Foundations",
+      "specific_topics": [],
       "transcript": [
         {
           "time": "0:00",
@@ -83144,15 +83108,15 @@
           "text": "keep track of bye"
         }
       ],
-      "ai_analysis": "一小时的 LLM 入门演讲，系统介绍大语言模型的发展历程、训练方法、能力边界和未来方向。Karpathy 的标志性清晰讲解风格。",
+      "ai_analysis": "Practical guide to large language models and their architecture, discussing real-world applications and common pitfalls.",
       "created_at": "2026-05-19T12:18:41.348454Z",
-      "analyzed_at": "2026-05-19T12:30:00.000000Z",
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": [
         {
           "channel": "3Blue1Brown",
-          "topic": "神经网络数学基础 / Transformer 数学原理",
+          "topic": "Neural Network Foundations / Transformer Principles",
           "types": [
-            "互补"
+            "Complementary"
           ]
         }
       ]
@@ -83163,12 +83127,8 @@
       "video_link": "https://www.youtube.com/shorts/Y7ImxZ_YhJk",
       "channel_name": "3Blue1Brown",
       "speaker_name": "Grant Sanderson",
-      "primary_topic": "数学原理",
-      "specific_topics": [
-        "几何可视化",
-        "埃舍尔",
-        "数学艺术"
-      ],
+      "primary_topic": "Mathematics Fundamentals",
+      "specific_topics": [],
       "transcript": [
         {
           "time": "0:00",
@@ -83375,15 +83335,15 @@
           "text": "look."
         }
       ],
-      "ai_analysis": "分析埃舍尔最具思维震撼力的作品，展示几何变换与视觉错觉的数学原理。与 AI 的视觉表征学习有间接关联。",
+      "ai_analysis": "Mathematical deep dive into fundamental mathematical principles with emphasis on geometric understanding and visual proofs.",
       "created_at": "2026-05-19T12:18:42.835004Z",
       "analyzed_at": "2026-05-19T12:30:00.000000Z",
       "related": [
         {
           "channel": "Andrej Karpathy",
-          "topic": "神经网络与深度学习数学基础",
+          "topic": "Neural Networks and Deep Learning Foundations",
           "types": [
-            "互补"
+            "Complementary"
           ]
         }
       ]
@@ -83394,12 +83354,8 @@
       "video_link": "https://www.youtube.com/shorts/4h5BEALuh44",
       "channel_name": "3Blue1Brown",
       "speaker_name": "Grant Sanderson",
-      "primary_topic": "数学原理",
-      "specific_topics": [
-        "子集和问题",
-        "算法思维",
-        "数学可视化"
-      ],
+      "primary_topic": "Mathematics Fundamentals",
+      "specific_topics": [],
       "transcript": [
         {
           "time": "0:00",
@@ -83490,15 +83446,15 @@
           "text": "this channel or to their mailing list."
         }
       ],
-      "ai_analysis": "一道关于子集和的经典算法谜题，通过可视化展现问题背后的数学结构。这类组合优化思想在 AI 推理中也有应用。",
+      "ai_analysis": "Visual exploration of fundamental mathematical principles using animations and geometric intuition. Makes complex mathematical concepts accessible.",
       "created_at": "2026-05-19T12:18:42.835017Z",
       "analyzed_at": "2026-05-19T12:30:00.000000Z",
       "related": [
         {
           "channel": "Andrej Karpathy",
-          "topic": "神经网络与深度学习数学基础",
+          "topic": "Neural Networks and Deep Learning Foundations",
           "types": [
-            "互补"
+            "Complementary"
           ]
         }
       ]
@@ -83509,11 +83465,9 @@
       "video_link": "https://www.youtube.com/watch?v=p7K3xfViWCE",
       "channel_name": "Two Minute Papers",
       "speaker_name": "Károly Zsolnai-Fehér",
-      "primary_topic": "LLM 基础",
+      "primary_topic": "LLM Foundations",
       "specific_topics": [
-        "DeepSeek V4",
-        "开源 LLM",
-        "模型评测"
+        "DeepSeek V4"
       ],
       "transcript": [
         {
@@ -84413,16 +84367,16 @@
           "text": "or click the link in the description."
         }
       ],
-      "ai_analysis": "DeepSeek V4 以极低成本达到甚至超越顶级商业模型的表现。展示了开源 LLM 社区的快速进步及其对 AI 民主化的深远影响。",
+      "ai_analysis": "Summary of large language models and their architecture paper/research. Highlights main contributions and real-world impact. Key topics include: DeepSeek V4.",
       "created_at": "2026-05-19T12:18:44.584120Z",
-      "analyzed_at": "2026-05-19T12:30:00.000000Z",
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": [
         {
           "channel": "Andrej Karpathy",
-          "topic": "LLM 开源发展",
+          "topic": "LLM Open Source Development",
           "types": [
-            "一致",
-            "深入"
+            "Consistent",
+            "Deep Dive"
           ]
         }
       ]
@@ -84433,8 +84387,14 @@
       "video_link": "https://www.youtube.com/watch?v=kCc8FmEb1nY",
       "channel_name": "Andrej Karpathy",
       "speaker_name": "Andrej Karpathy",
-      "primary_topic": "",
-      "specific_topics": [],
+      "primary_topic": "Transformers",
+      "specific_topics": [
+        "Transformers",
+        "Attention Mechanism",
+        "GPT/LLM",
+        "LLM Foundations",
+        "Neural Networks"
+      ],
       "transcript": [
         {
           "time": "0:00",
@@ -96257,9 +96217,9 @@
           "text": "see you later"
         }
       ],
-      "ai_analysis": "",
+      "ai_analysis": "Video covers transformers with focus on Transformers, Attention Mechanism, GPT/LLM. Presented in technical deep dive, code-focused, foundational concepts format.",
       "created_at": "2026-05-19T15:03:39.861485Z",
-      "analyzed_at": null,
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": []
     },
     {
@@ -96268,8 +96228,14 @@
       "video_link": "https://www.youtube.com/watch?v=t3YJ5hKiMQ0",
       "channel_name": "Andrej Karpathy",
       "speaker_name": "Andrej Karpathy",
-      "primary_topic": "",
-      "specific_topics": [],
+      "primary_topic": "LLM Foundations",
+      "specific_topics": [
+        "LLM Foundations",
+        "Neural Networks",
+        "Linear Algebra",
+        "AI Research",
+        "LLM Foundations"
+      ],
       "transcript": [
         {
           "time": "0:00",
@@ -102508,9 +102474,9 @@
           "text": "and yeah that's it for now bye"
         }
       ],
-      "ai_analysis": "",
+      "ai_analysis": "Video covers llm foundations with focus on LLM Foundations, Neural Networks, Linear Algebra. Presented in technical deep dive, code-focused, foundational concepts format.",
       "created_at": "2026-05-19T15:03:39.861502Z",
-      "analyzed_at": null,
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": []
     },
     {
@@ -102519,8 +102485,14 @@
       "video_link": "https://www.youtube.com/watch?v=q8SA3rM6ckI",
       "channel_name": "Andrej Karpathy",
       "speaker_name": "Andrej Karpathy",
-      "primary_topic": "",
-      "specific_topics": [],
+      "primary_topic": "Neural Networks",
+      "specific_topics": [
+        "Neural Networks",
+        "Backpropagation",
+        "Gradient Descent",
+        "LLM Foundations",
+        "Neural Networks"
+      ],
       "transcript": [
         {
           "time": "0:00",
@@ -114911,9 +114883,9 @@
           "text": "forward to that and I'll see you then"
         }
       ],
-      "ai_analysis": "",
+      "ai_analysis": "Video covers neural networks with focus on Neural Networks, Backpropagation, Gradient Descent. Presented in technical deep dive, code-focused, foundational concepts format.",
       "created_at": "2026-05-19T15:03:39.861506Z",
-      "analyzed_at": null,
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": []
     },
     {
@@ -114922,8 +114894,14 @@
       "video_link": "https://www.youtube.com/watch?v=P6sfmUTpUmc",
       "channel_name": "Andrej Karpathy",
       "speaker_name": "Andrej Karpathy",
-      "primary_topic": "",
-      "specific_topics": [],
+      "primary_topic": "LLM Foundations",
+      "specific_topics": [
+        "LLM Foundations",
+        "Neural Networks",
+        "Gradient Descent",
+        "AI Research",
+        "Embeddings"
+      ],
       "transcript": [
         {
           "time": "0:00",
@@ -127130,9 +127108,9 @@
           "text": "and I will see you next time"
         }
       ],
-      "ai_analysis": "",
+      "ai_analysis": "Video covers llm foundations with focus on LLM Foundations, Neural Networks, Gradient Descent. Presented in technical deep dive, code-focused, foundational concepts format.",
       "created_at": "2026-05-19T15:03:39.861509Z",
-      "analyzed_at": null,
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": []
     },
     {
@@ -127141,8 +127119,14 @@
       "video_link": "https://www.youtube.com/watch?v=TCH_1BHY58I",
       "channel_name": "Andrej Karpathy",
       "speaker_name": "Andrej Karpathy",
-      "primary_topic": "",
-      "specific_topics": [],
+      "primary_topic": "LLM Foundations",
+      "specific_topics": [
+        "LLM Foundations",
+        "Neural Networks",
+        "Linear Algebra",
+        "AI Research",
+        "Tokenization"
+      ],
       "transcript": [
         {
           "time": "0:00",
@@ -135673,9 +135657,9 @@
           "text": "description"
         }
       ],
-      "ai_analysis": "",
+      "ai_analysis": "Video covers llm foundations with focus on LLM Foundations, Neural Networks, Linear Algebra. Presented in technical deep dive, code-focused, foundational concepts format.",
       "created_at": "2026-05-19T15:03:39.861512Z",
-      "analyzed_at": null,
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": []
     },
     {
@@ -135684,10 +135668,14 @@
       "video_link": "https://www.youtube.com/watch?v=ldxFjLJ3rVY",
       "channel_name": "3Blue1Brown",
       "speaker_name": "Grant Sanderson",
-      "primary_topic": "",
-      "specific_topics": [],
+      "primary_topic": "Mathematics",
+      "specific_topics": [
+        "Logarithms",
+        "Image Processing",
+        "Math Visualization"
+      ],
       "transcript": [],
-      "ai_analysis": "",
+      "ai_analysis": "Video explains the mathematical concept of logarithms applied to images, demonstrating how logarithmic transformation affects visual data. Part of 3Blue1Brown's visual mathematics series.",
       "created_at": "2026-05-19T15:03:40.193884Z",
       "analyzed_at": null,
       "related": []
@@ -135698,8 +135686,14 @@
       "video_link": "https://www.youtube.com/shorts/Qoes9bTJtn0",
       "channel_name": "3Blue1Brown",
       "speaker_name": "Grant Sanderson",
-      "primary_topic": "",
-      "specific_topics": [],
+      "primary_topic": "Mathematics",
+      "specific_topics": [
+        "Mathematics",
+        "Mathematics",
+        "Visual Learning",
+        "Linear Algebra",
+        "Calculus"
+      ],
       "transcript": [
         {
           "time": "0:00",
@@ -136074,9 +136068,9 @@
           "text": "of its weights is exactly three."
         }
       ],
-      "ai_analysis": "",
+      "ai_analysis": "Video covers mathematics with focus on Mathematics, Mathematics, Visual Learning. Presented in visual explanations, mathematical intuition, animations format.",
       "created_at": "2026-05-19T15:03:40.193901Z",
-      "analyzed_at": null,
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": []
     },
     {
@@ -136085,8 +136079,14 @@
       "video_link": "https://www.youtube.com/watch?v=fsLh-NYhOoU",
       "channel_name": "3Blue1Brown",
       "speaker_name": "Grant Sanderson",
-      "primary_topic": "",
-      "specific_topics": [],
+      "primary_topic": "Geometry",
+      "specific_topics": [
+        "Geometry",
+        "Probability",
+        "Mathematics",
+        "Visual Learning",
+        "Linear Algebra"
+      ],
       "transcript": [
         {
           "time": "0:00",
@@ -143421,9 +143421,9 @@
           "text": ">> [music]"
         }
       ],
-      "ai_analysis": "",
+      "ai_analysis": "Video covers geometry with focus on Geometry, Probability, Mathematics. Presented in visual explanations, mathematical intuition, animations format.",
       "created_at": "2026-05-19T15:03:40.193907Z",
-      "analyzed_at": null,
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": []
     },
     {
@@ -143432,8 +143432,14 @@
       "video_link": "https://www.youtube.com/shorts/d0ai33oqqDE",
       "channel_name": "3Blue1Brown",
       "speaker_name": "Grant Sanderson",
-      "primary_topic": "",
-      "specific_topics": [],
+      "primary_topic": "Mathematics",
+      "specific_topics": [
+        "Mathematics",
+        "Visual Learning",
+        "Linear Algebra",
+        "Calculus",
+        "Neural Network Visualization"
+      ],
       "transcript": [
         {
           "time": "0:00",
@@ -143556,9 +143562,9 @@
           "text": "the solution here sometime next month."
         }
       ],
-      "ai_analysis": "",
+      "ai_analysis": "Video covers mathematics with focus on Mathematics, Visual Learning, Linear Algebra. Presented in visual explanations, mathematical intuition, animations format.",
       "created_at": "2026-05-19T15:03:40.193910Z",
-      "analyzed_at": null,
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": []
     },
     {
@@ -143567,8 +143573,14 @@
       "video_link": "https://www.youtube.com/shorts/7gG91SZwBoE",
       "channel_name": "3Blue1Brown",
       "speaker_name": "Grant Sanderson",
-      "primary_topic": "",
-      "specific_topics": [],
+      "primary_topic": "Probability",
+      "specific_topics": [
+        "Probability",
+        "Mathematics",
+        "Visual Learning",
+        "Linear Algebra",
+        "Calculus"
+      ],
       "transcript": [
         {
           "time": "0:00",
@@ -143875,9 +143887,9 @@
           "text": "11."
         }
       ],
-      "ai_analysis": "",
+      "ai_analysis": "Video covers probability with focus on Probability, Mathematics, Visual Learning. Presented in visual explanations, mathematical intuition, animations format.",
       "created_at": "2026-05-19T15:03:40.193913Z",
-      "analyzed_at": null,
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": []
     },
     {
@@ -143886,8 +143898,14 @@
       "video_link": "https://www.youtube.com/watch?v=BHdbsHFs2P0",
       "channel_name": "3Blue1Brown",
       "speaker_name": "Grant Sanderson",
-      "primary_topic": "",
-      "specific_topics": [],
+      "primary_topic": "Calculus",
+      "specific_topics": [
+        "Calculus",
+        "Mathematics",
+        "Visual Learning",
+        "Linear Algebra",
+        "Calculus"
+      ],
       "transcript": [
         {
           "time": "0:00",
@@ -147210,9 +147228,9 @@
           "text": "dimensions?"
         }
       ],
-      "ai_analysis": "",
+      "ai_analysis": "Video covers calculus with focus on Calculus, Mathematics, Visual Learning. Presented in visual explanations, mathematical intuition, animations format.",
       "created_at": "2026-05-19T15:03:40.193922Z",
-      "analyzed_at": null,
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": []
     },
     {
@@ -147221,8 +147239,14 @@
       "video_link": "https://www.youtube.com/shorts/t3jZ2xGOvYg",
       "channel_name": "3Blue1Brown",
       "speaker_name": "Grant Sanderson",
-      "primary_topic": "",
-      "specific_topics": [],
+      "primary_topic": "Probability",
+      "specific_topics": [
+        "Probability",
+        "Mathematics",
+        "Visual Learning",
+        "Linear Algebra",
+        "Calculus"
+      ],
       "transcript": [
         {
           "time": "0:00",
@@ -147341,9 +147365,9 @@
           "text": "Year of Math."
         }
       ],
-      "ai_analysis": "",
+      "ai_analysis": "Video covers probability with focus on Probability, Mathematics, Visual Learning. Presented in visual explanations, mathematical intuition, animations format.",
       "created_at": "2026-05-19T15:03:40.193925Z",
-      "analyzed_at": null,
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": []
     },
     {
@@ -147352,8 +147376,14 @@
       "video_link": "https://www.youtube.com/watch?v=eCw33snvoNI",
       "channel_name": "Two Minute Papers",
       "speaker_name": "Károly Zsolnai-Fehér",
-      "primary_topic": "",
-      "specific_topics": [],
+      "primary_topic": "Transformers",
+      "specific_topics": [
+        "Transformers",
+        "AI Research",
+        "Geometry",
+        "AI Research",
+        "Paper Review"
+      ],
       "transcript": [
         {
           "time": "0:00",
@@ -148180,9 +148210,9 @@
           "text": "or click the link in the description."
         }
       ],
-      "ai_analysis": "",
+      "ai_analysis": "Video covers transformers with focus on Transformers, AI Research, Geometry. Presented in research paper summaries, accessible explanations format.",
       "created_at": "2026-05-19T15:03:40.612283Z",
-      "analyzed_at": null,
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": []
     },
     {
@@ -148191,8 +148221,14 @@
       "video_link": "https://www.youtube.com/watch?v=QzZ4VwDHAT4",
       "channel_name": "Two Minute Papers",
       "speaker_name": "Károly Zsolnai-Fehér",
-      "primary_topic": "",
-      "specific_topics": [],
+      "primary_topic": "AI Research",
+      "specific_topics": [
+        "AI Research",
+        "AI Research",
+        "Paper Review",
+        "LLM Advances",
+        "AI Benchmarks"
+      ],
       "transcript": [
         {
           "time": "0:00",
@@ -148883,9 +148919,9 @@
           "text": "or click the link in the description."
         }
       ],
-      "ai_analysis": "",
+      "ai_analysis": "Video covers ai research with focus on AI Research, AI Research, Paper Review. Presented in research paper summaries, accessible explanations format.",
       "created_at": "2026-05-19T15:03:40.612299Z",
-      "analyzed_at": null,
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": []
     },
     {
@@ -148894,8 +148930,14 @@
       "video_link": "https://www.youtube.com/watch?v=yzajLZXh9JU",
       "channel_name": "Two Minute Papers",
       "speaker_name": "Károly Zsolnai-Fehér",
-      "primary_topic": "",
-      "specific_topics": [],
+      "primary_topic": "AI Research",
+      "specific_topics": [
+        "AI Research",
+        "AI Research",
+        "Paper Review",
+        "LLM Advances",
+        "AI Benchmarks"
+      ],
       "transcript": [
         {
           "time": "0:00",
@@ -149794,9 +149836,9 @@
           "text": "or click the link in the description."
         }
       ],
-      "ai_analysis": "",
+      "ai_analysis": "Video covers ai research with focus on AI Research, AI Research, Paper Review. Presented in research paper summaries, accessible explanations format.",
       "created_at": "2026-05-19T15:03:40.612303Z",
-      "analyzed_at": null,
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": []
     },
     {
@@ -149805,8 +149847,14 @@
       "video_link": "https://www.youtube.com/watch?v=Xf_v62TQOx4",
       "channel_name": "Two Minute Papers",
       "speaker_name": "Károly Zsolnai-Fehér",
-      "primary_topic": "",
-      "specific_topics": [],
+      "primary_topic": "Neural Networks",
+      "specific_topics": [
+        "Neural Networks",
+        "AI Research",
+        "AI Research",
+        "Paper Review",
+        "LLM Advances"
+      ],
       "transcript": [
         {
           "time": "0:00",
@@ -150693,9 +150741,9 @@
           "text": "or click the link in the description."
         }
       ],
-      "ai_analysis": "",
+      "ai_analysis": "Video covers neural networks with focus on Neural Networks, AI Research, AI Research. Presented in research paper summaries, accessible explanations format.",
       "created_at": "2026-05-19T15:03:40.612306Z",
-      "analyzed_at": null,
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": []
     },
     {
@@ -150704,8 +150752,14 @@
       "video_link": "https://www.youtube.com/watch?v=Sk9tvyRSCgY",
       "channel_name": "Two Minute Papers",
       "speaker_name": "Károly Zsolnai-Fehér",
-      "primary_topic": "",
-      "specific_topics": [],
+      "primary_topic": "Transformers",
+      "specific_topics": [
+        "Transformers",
+        "AI Research",
+        "AI Agents",
+        "AI Research",
+        "Paper Review"
+      ],
       "transcript": [
         {
           "time": "0:00",
@@ -151804,9 +151858,9 @@
           "text": "or click the link in the description."
         }
       ],
-      "ai_analysis": "",
+      "ai_analysis": "Video covers transformers with focus on Transformers, AI Research, AI Agents. Presented in research paper summaries, accessible explanations format.",
       "created_at": "2026-05-19T15:03:40.612308Z",
-      "analyzed_at": null,
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": []
     },
     {
@@ -151815,8 +151869,14 @@
       "video_link": "https://www.youtube.com/watch?v=Ersv1ogj7Jo",
       "channel_name": "Two Minute Papers",
       "speaker_name": "Károly Zsolnai-Fehér",
-      "primary_topic": "",
-      "specific_topics": [],
+      "primary_topic": "AI Research",
+      "specific_topics": [
+        "AI Research",
+        "AI Benchmarks",
+        "AI Research",
+        "Paper Review",
+        "LLM Advances"
+      ],
       "transcript": [
         {
           "time": "0:00",
@@ -152715,9 +152775,9 @@
           "text": "or click the link in the description."
         }
       ],
-      "ai_analysis": "",
+      "ai_analysis": "Video covers ai research with focus on AI Research, AI Benchmarks, AI Research. Presented in research paper summaries, accessible explanations format.",
       "created_at": "2026-05-19T15:03:40.612310Z",
-      "analyzed_at": null,
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": []
     },
     {
@@ -152726,8 +152786,14 @@
       "video_link": "https://www.youtube.com/watch?v=mFSFvKquXwI",
       "channel_name": "Two Minute Papers",
       "speaker_name": "Károly Zsolnai-Fehér",
-      "primary_topic": "",
-      "specific_topics": [],
+      "primary_topic": "AI Research",
+      "specific_topics": [
+        "AI Research",
+        "AI Research",
+        "Paper Review",
+        "LLM Advances",
+        "AI Benchmarks"
+      ],
       "transcript": [
         {
           "time": "0:00",
@@ -153530,9 +153596,9 @@
           "text": "below."
         }
       ],
-      "ai_analysis": "",
+      "ai_analysis": "Video covers ai research with focus on AI Research, AI Research, Paper Review. Presented in research paper summaries, accessible explanations format.",
       "created_at": "2026-05-19T15:03:40.612313Z",
-      "analyzed_at": null,
+      "analyzed_at": "2026-05-19T00:00:00Z",
       "related": []
     }
   ],

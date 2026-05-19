@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LLM Research Tracker</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #0a0a0b;
@@ -37,7 +37,7 @@
         }
 
         body {
-            font-family: 'Inter', 'Noto Serif SC', serif;
+            font-family: 'Inter', system-ui, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.5;
@@ -318,24 +318,6 @@
             font-style: italic;
         }
 
-        /* Speaker Info */
-        .speaker-info {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .speaker-avatar {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--bg-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-        }
-
         /* Tags */
         .tags-container {
             display: flex;
@@ -365,17 +347,6 @@
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 0.75rem;
-        }
-
-        .connection-row {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .connection-row:last-child {
-            margin-bottom: 0;
         }
 
         .connection-item {
@@ -411,11 +382,11 @@
             font-weight: 500;
         }
 
-        .type-互补 { background: rgba(52, 211, 153, 0.2); color: var(--accent-green); }
-        .type-延续 { background: rgba(74, 158, 255, 0.2); color: var(--accent-blue); }
-        .type-一致 { background: rgba(167, 139, 250, 0.2); color: var(--accent-purple); }
-        .type-对立 { background: rgba(248, 113, 113, 0.2); color: var(--accent-red); }
-        .type-深入 { background: rgba(251, 146, 60, 0.2); color: var(--accent-orange); }
+        .type-Complementary { background: rgba(52, 211, 153, 0.2); color: var(--accent-green); }
+        .type-Continuation { background: rgba(74, 158, 255, 0.2); color: var(--accent-blue); }
+        .type-Consistent { background: rgba(167, 139, 250, 0.2); color: var(--accent-purple); }
+        .type-Contrasting { background: rgba(248, 113, 113, 0.2); color: var(--accent-red); }
+        .type-Deep { background: rgba(251, 146, 60, 0.2); color: var(--accent-orange); }
 
         /* Transcript Section */
         .transcript-section {
@@ -638,7 +609,7 @@
                 <div class="logo-icon">LLM</div>
                 <div>
                     <div class="logo-text">Research Tracker</div>
-                    <div class="logo-subtitle">YouTube 订阅分析系统</div>
+                    <div class="logo-subtitle">YouTube Subscription Analytics</div>
                 </div>
             </div>
         </div>
@@ -647,20 +618,20 @@
     <div class="stats-bar">
         <div class="stats-inner">
             <div class="stat-item">
-                <span class="stat-label">总视频</span>
+                <span class="stat-label">Total Videos</span>
                 <span class="stat-value" id="total-videos">0</span>
             </div>
             <div class="stat-item">
-                <span class="stat-label">已分析</span>
+                <span class="stat-label">Analyzed</span>
                 <span class="stat-value" id="analyzed-videos">0</span>
             </div>
             <div class="stat-item">
                 <span class="stat-dot" style="background: var(--accent-green);"></span>
-                <span class="stat-label">活跃频道</span>
+                <span class="stat-label">Active Channels</span>
                 <span class="stat-value">3</span>
             </div>
             <div class="stat-item">
-                <span class="stat-label">分析率</span>
+                <span class="stat-label">Analysis Rate</span>
                 <span class="stat-value" id="analysis-rate">0%</span>
             </div>
         </div>
@@ -668,7 +639,7 @@
 
     <div class="filter-tabs" id="filter-tabs">
         <button class="filter-tab active" data-filter="all">
-            全部 <span class="count" id="count-all">0</span>
+            All <span class="count" id="count-all">0</span>
         </button>
         <button class="filter-tab" data-filter="3Blue1Brown">
             <span class="stat-dot" style="background: var(--channel-3blue);"></span>
@@ -683,41 +654,41 @@
             Two Minute Papers <span class="count" id="count-papers">0</span>
         </button>
         <div class="view-toggle">
-            <button class="view-btn active" data-view="full">完整</button>
-            <button class="view-btn" data-view="compact">精简</button>
+            <button class="view-btn active" data-view="full">Full</button>
+            <button class="view-btn" data-view="compact">Compact</button>
         </div>
     </div>
 
     <main class="video-grid" id="video-grid"></main>
 
     <script>
-        // 数据加载
+        // Data loading
         async function loadData() {
             try {
                 const response = await fetch('videos.json?t=' + Date.now());
                 const data = await response.json();
                 return data;
             } catch (error) {
-                console.error('加载数据失败:', error);
+                console.error('Failed to load data:', error);
                 return { videos: [], channels: {} };
             }
         }
 
-        // 频道信息
+        // Channel info
         const channelInfo = {
             '3Blue1Brown': { class: 'channel-3blue', short: '3B1' },
             'Andrej Karpathy': { class: 'channel-karpathy', short: 'AK' },
             'Two Minute Papers': { class: 'channel-papers', short: '2MP' }
         };
 
-        // 格式化日期
+        // Format date
         function formatDate(dateString) {
-            if (!dateString) return '未知';
+            if (!dateString) return 'Unknown';
             const date = new Date(dateString);
-            return date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' });
+            return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
         }
 
-        // 相对时间
+        // Relative time
         function relativeDate(dateString) {
             if (!dateString) return '';
             const date = new Date(dateString);
@@ -725,34 +696,44 @@
             const diff = now - date;
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
 
-            if (days === 0) return '今天';
-            if (days === 1) return '昨天';
-            if (days < 7) return `${days}天前`;
-            return `${Math.floor(days / 7)}周前`;
+            if (days === 0) return 'Today';
+            if (days === 1) return 'Yesterday';
+            if (days < 7) return `${days} day${days > 1 ? 's' : ''} ago`;
+            return `${Math.floor(days / 7)} week${Math.floor(days / 7) > 1 ? 's' : ''} ago`;
         }
 
-        // 渲染完整卡片
+        // Render full card
         function renderFullCard(video, index) {
             const info = channelInfo[video.channel_name] || { class: '', short: '??' };
             const hasAnalysis = video.analyzed_at;
             const createdAt = relativeDate(video.created_at);
 
-            // 主主题标签
+            // Primary topic tag
             const primaryTag = video.primary_topic
                 ? `<span class="tag primary">${video.primary_topic}</span>`
-                : `<span class="tag" style="color:var(--text-muted)">未分类</span>`;
+                : `<span class="tag" style="color:var(--text-muted)">Uncategorized</span>`;
 
-            // 具体话题标签
+            // Specific topic tags
             const specificTags = (video.specific_topics || [])
                 .map(t => `<span class="tag">${t}</span>`)
                 .join('');
 
-            // 关联信息（多组）
+            // Connection info
             let connectionHtml = '';
             if (video.related && video.related.length > 0) {
                 const relItems = video.related.map(rel => {
                     const types = (rel.types || [])
-                        .map(t => `<span class="connection-type type-${t}">${t}</span>`)
+                        .map(t => {
+                            const typeMap = {
+                                '互补': 'Complementary',
+                                '延续': 'Continuation',
+                                '一致': 'Consistent',
+                                '对立': 'Contrasting',
+                                '深入': 'Deep Dive'
+                            };
+                            const enType = typeMap[t] || t;
+                            return `<span class="connection-type type-${enType}">${enType}</span>`;
+                        })
                         .join('');
                     return `
                         <div class="connection-item">
@@ -767,33 +748,33 @@
                     <div class="field-group">
                         <div class="field-label">
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-                            主题关联
+                            Related Content
                         </div>
                         <div class="connection-info">${relItems}</div>
                     </div>
                 `;
             }
 
-            // 内容摘要（精简分析）
+            // AI Analysis
             let analysisHtml = '';
             if (video.ai_analysis) {
                 analysisHtml = `
                     <div class="field-group">
                         <div class="field-label">
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-                            AI 分析
+                            AI Analysis
                         </div>
                         <div class="ai-analysis">${video.ai_analysis}</div>
                     </div>`;
             }
 
-            // 字幕（可折叠，懒加载）
+            // Transcript (lazy loaded)
             let transcriptHtml = '';
             if (video.transcript && video.transcript.length > 0) {
                 transcriptHtml = `
                     <div class="transcript-section">
                         <button class="transcript-toggle" onclick="toggleTranscript(this, ${index})">
-                            <span>📄 字幕 (${video.transcript.length} 条)</span>
+                            <span>📄 Transcript (${video.transcript.length} entries)</span>
                             <span class="arrow">▼</span>
                         </button>
                         <div class="transcript-content" id="tc-${index}"></div>
@@ -806,7 +787,7 @@
                         <div class="card-header-top">
                             <div class="channel-badge ${info.class}">${info.short}</div>
                             <div style="flex:1">
-                                <div class="video-title">${video.video_title || '未命名视频'}</div>
+                                <div class="video-title">${video.video_title || 'Untitled Video'}</div>
                             </div>
                         </div>
                         <a href="${video.video_link}" target="_blank" style="color:var(--text-muted);font-size:0.7rem;font-family:'JetBrains Mono',monospace;text-decoration:none;">
@@ -815,32 +796,32 @@
                     </div>
 
                     <div class="card-body">
-                        <!-- 演讲者 -->
+                        <!-- Speaker -->
                         <div class="field-group">
                             <div class="field-label">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                                演讲者
+                                Speaker
                             </div>
                             <div class="field-value ${video.speaker_name ? '' : 'empty'}">
-                                ${video.speaker_name || '待填写'}
+                                ${video.speaker_name || 'TBD'}
                             </div>
                         </div>
 
-                        <!-- 主题分类 -->
+                        <!-- Topics -->
                         <div class="field-group">
                             <div class="field-label">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-                                主题分类
+                                Topics
                             </div>
                             <div class="tags-container">
                                 ${primaryTag}${specificTags}
                             </div>
                         </div>
 
-                        <!-- AI 分析 -->
+                        <!-- AI Analysis -->
                         ${analysisHtml}
 
-                        <!-- 主题关联 -->
+                        <!-- Related Content -->
                         ${connectionHtml}
                     </div>
 
@@ -852,11 +833,11 @@
                         </div>
                         <div style="display:flex;align-items:center;gap:0.75rem;">
                             <span class="status-badge ${hasAnalysis ? 'status-analyzed' : 'status-pending'}">
-                                ${hasAnalysis ? '✓ 已分析' : '○ 待分析'}
+                                ${hasAnalysis ? '✓ Analyzed' : '○ Pending'}
                             </span>
                             <a href="${video.video_link}" target="_blank" class="watch-btn">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                                观看
+                                Watch
                             </a>
                         </div>
                     </div>
@@ -864,7 +845,7 @@
             `;
         }
 
-        // 渲染精简卡片
+        // Render compact card
         function renderCompactCard(video, index) {
             const info = channelInfo[video.channel_name] || { class: '', short: '??' };
             const hasAnalysis = video.analyzed_at;
@@ -876,7 +857,7 @@
                         <div class="card-header-top">
                             <div class="channel-badge ${info.class}">${info.short}</div>
                             <div style="flex:1">
-                                <div class="video-title">${video.video_title || '未命名视频'}</div>
+                                <div class="video-title">${video.video_title || 'Untitled Video'}</div>
                             </div>
                         </div>
                     </div>
@@ -906,7 +887,7 @@
             `;
         }
 
-        // 更新统计数据
+        // Update stats
         function updateStats(videos) {
             const analyzed = videos.filter(v => v.analyzed_at);
             const rate = videos.length ? Math.round((analyzed.length / videos.length) * 100) : 0;
@@ -915,7 +896,7 @@
             document.getElementById('analyzed-videos').textContent = analyzed.length;
             document.getElementById('analysis-rate').textContent = rate + '%';
 
-            // 按频道统计
+            // Count by channel
             const channelCounts = {};
             videos.forEach(v => {
                 channelCounts[v.channel_name] = (channelCounts[v.channel_name] || 0) + 1;
@@ -927,7 +908,7 @@
             document.getElementById('count-papers').textContent = channelCounts['Two Minute Papers'] || 0;
         }
 
-        // 字幕懒加载
+        // Transcript lazy load
         function toggleTranscript(btn, index) {
             const content = document.getElementById('tc-' + index);
             if (content.dataset.loaded) {
@@ -949,7 +930,7 @@
             content.classList.add('open');
         }
 
-        // 过滤和渲染
+        // Filter and render
         let currentFilter = 'all';
         let currentView = 'full';
         let allVideos = [];
@@ -965,7 +946,7 @@
                 grid.innerHTML = `
                     <div class="empty-state">
                         <div class="empty-icon">📭</div>
-                        <div>该频道暂无视频</div>
+                        <div>No videos for this channel</div>
                     </div>
                 `;
                 return;
@@ -980,7 +961,7 @@
             renderVideos();
         }
 
-        // 初始化
+        // Initialize
         async function init() {
             const data = await loadData();
             allVideos = data.videos || [];
@@ -988,7 +969,7 @@
             updateStats(allVideos);
             renderVideos();
 
-            // 过滤器点击
+            // Filter tabs
             document.getElementById('filter-tabs').addEventListener('click', (e) => {
                 const tab = e.target.closest('.filter-tab');
                 if (!tab) return;
@@ -999,7 +980,7 @@
                 filterVideos(tab.dataset.filter);
             });
 
-            // 视图切换
+            // View toggle
             document.querySelectorAll('.view-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
                     document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
