@@ -15264,7 +15264,15 @@
       "ai_analysis": "Overview of recent frontier AI research and developments research. Discusses key findings, benchmarks, and implications for the field. Key topics include: NVIDIA.",
       "created_at": "2026-05-19T12:09:42.409222Z",
       "analyzed_at": "2026-05-19T12:30:00.000000Z",
-      "related": []
+      "related": [
+        {
+          "channel": "Andrej Karpathy",
+          "topic": "LLM Efficiency & Scaling",
+          "types": [
+            "Complementary"
+          ]
+        }
+      ]
     },
     {
       "video_id": "7xTGNNLPyMI",
@@ -96220,7 +96228,15 @@
       "ai_analysis": "Video covers transformers with focus on Transformers, Attention Mechanism, GPT/LLM. Presented in technical deep dive, code-focused, foundational concepts format.",
       "created_at": "2026-05-19T15:03:39.861485Z",
       "analyzed_at": "2026-05-19T00:00:00Z",
-      "related": []
+      "related": [
+        {
+          "channel": "3Blue1Brown",
+          "topic": "Neural Network Math Foundations",
+          "types": [
+            "Complementary"
+          ]
+        }
+      ]
     },
     {
       "video_id": "t3YJ5hKiMQ0",
@@ -102477,7 +102493,15 @@
       "ai_analysis": "Video covers llm foundations with focus on LLM Foundations, Neural Networks, Linear Algebra. Presented in technical deep dive, code-focused, foundational concepts format.",
       "created_at": "2026-05-19T15:03:39.861502Z",
       "analyzed_at": "2026-05-19T00:00:00Z",
-      "related": []
+      "related": [
+        {
+          "channel": "3Blue1Brown",
+          "topic": "Mathematical Foundations for Deep Learning",
+          "types": [
+            "Complementary"
+          ]
+        }
+      ]
     },
     {
       "video_id": "q8SA3rM6ckI",
@@ -114886,7 +114910,16 @@
       "ai_analysis": "Video covers neural networks with focus on Neural Networks, Backpropagation, Gradient Descent. Presented in technical deep dive, code-focused, foundational concepts format.",
       "created_at": "2026-05-19T15:03:39.861506Z",
       "analyzed_at": "2026-05-19T00:00:00Z",
-      "related": []
+      "related": [
+        {
+          "channel": "3Blue1Brown",
+          "topic": "Calculus & Gradient Visualization",
+          "types": [
+            "Complementary",
+            "Deep Dive"
+          ]
+        }
+      ]
     },
     {
       "video_id": "P6sfmUTpUmc",
@@ -127111,7 +127144,15 @@
       "ai_analysis": "Video covers llm foundations with focus on LLM Foundations, Neural Networks, Gradient Descent. Presented in technical deep dive, code-focused, foundational concepts format.",
       "created_at": "2026-05-19T15:03:39.861509Z",
       "analyzed_at": "2026-05-19T00:00:00Z",
-      "related": []
+      "related": [
+        {
+          "channel": "3Blue1Brown",
+          "topic": "Neural Network Intuition",
+          "types": [
+            "Complementary"
+          ]
+        }
+      ]
     },
     {
       "video_id": "TCH_1BHY58I",
@@ -135660,7 +135701,15 @@
       "ai_analysis": "Video covers llm foundations with focus on LLM Foundations, Neural Networks, Linear Algebra. Presented in technical deep dive, code-focused, foundational concepts format.",
       "created_at": "2026-05-19T15:03:39.861512Z",
       "analyzed_at": "2026-05-19T00:00:00Z",
-      "related": []
+      "related": [
+        {
+          "channel": "3Blue1Brown",
+          "topic": "Linear Algebra for Neural Networks",
+          "types": [
+            "Complementary"
+          ]
+        }
+      ]
     },
     {
       "video_id": "ldxFjLJ3rVY",
@@ -135678,7 +135727,15 @@
       "ai_analysis": "Video explains the mathematical concept of logarithms applied to images, demonstrating how logarithmic transformation affects visual data. Part of 3Blue1Brown's visual mathematics series.",
       "created_at": "2026-05-19T15:03:40.193884Z",
       "analyzed_at": null,
-      "related": []
+      "related": [
+        {
+          "channel": "Andrej Karpathy",
+          "topic": "Math Foundations for Neural Networks",
+          "types": [
+            "Complementary"
+          ]
+        }
+      ]
     },
     {
       "video_id": "Qoes9bTJtn0",
@@ -136071,7 +136128,15 @@
       "ai_analysis": "Video covers mathematics with focus on Mathematics, Mathematics, Visual Learning. Presented in visual explanations, mathematical intuition, animations format.",
       "created_at": "2026-05-19T15:03:40.193901Z",
       "analyzed_at": "2026-05-19T00:00:00Z",
-      "related": []
+      "related": [
+        {
+          "channel": "Andrej Karpathy",
+          "topic": "Computational Problem Solving",
+          "types": [
+            "Complementary"
+          ]
+        }
+      ]
     },
     {
       "video_id": "fsLh-NYhOoU",
@@ -143424,7 +143489,15 @@
       "ai_analysis": "Video covers geometry with focus on Geometry, Probability, Mathematics. Presented in visual explanations, mathematical intuition, animations format.",
       "created_at": "2026-05-19T15:03:40.193907Z",
       "analyzed_at": "2026-05-19T00:00:00Z",
-      "related": []
+      "related": [
+        {
+          "channel": "Andrej Karpathy",
+          "topic": "Math for Machine Learning",
+          "types": [
+            "Complementary"
+          ]
+        }
+      ]
     },
     {
       "video_id": "d0ai33oqqDE",
@@ -143565,7 +143638,15 @@
       "ai_analysis": "Video covers mathematics with focus on Mathematics, Visual Learning, Linear Algebra. Presented in visual explanations, mathematical intuition, animations format.",
       "created_at": "2026-05-19T15:03:40.193910Z",
       "analyzed_at": "2026-05-19T00:00:00Z",
-      "related": []
+      "related": [
+        {
+          "channel": "Andrej Karpathy",
+          "topic": "Algorithmic Thinking",
+          "types": [
+            "Complementary"
+          ]
+        }
+      ]
     },
     {
       "video_id": "7gG91SZwBoE",
@@ -143890,7 +143971,15 @@
       "ai_analysis": "Video covers probability with focus on Probability, Mathematics, Visual Learning. Presented in visual explanations, mathematical intuition, animations format.",
       "created_at": "2026-05-19T15:03:40.193913Z",
       "analyzed_at": "2026-05-19T00:00:00Z",
-      "related": []
+      "related": [
+        {
+          "channel": "Andrej Karpathy",
+          "topic": "Probability in ML",
+          "types": [
+            "Complementary"
+          ]
+        }
+      ]
     },
     {
       "video_id": "BHdbsHFs2P0",
@@ -147231,7 +147320,15 @@
       "ai_analysis": "Video covers calculus with focus on Calculus, Mathematics, Visual Learning. Presented in visual explanations, mathematical intuition, animations format.",
       "created_at": "2026-05-19T15:03:40.193922Z",
       "analyzed_at": "2026-05-19T00:00:00Z",
-      "related": []
+      "related": [
+        {
+          "channel": "Andrej Karpathy",
+          "topic": "Topology in Data Science",
+          "types": [
+            "Complementary"
+          ]
+        }
+      ]
     },
     {
       "video_id": "t3jZ2xGOvYg",
@@ -147368,7 +147465,15 @@
       "ai_analysis": "Video covers probability with focus on Probability, Mathematics, Visual Learning. Presented in visual explanations, mathematical intuition, animations format.",
       "created_at": "2026-05-19T15:03:40.193925Z",
       "analyzed_at": "2026-05-19T00:00:00Z",
-      "related": []
+      "related": [
+        {
+          "channel": "Andrej Karpathy",
+          "topic": "Probability in ML",
+          "types": [
+            "Complementary"
+          ]
+        }
+      ]
     },
     {
       "video_id": "eCw33snvoNI",
@@ -148213,7 +148318,15 @@
       "ai_analysis": "Video covers transformers with focus on Transformers, AI Research, Geometry. Presented in research paper summaries, accessible explanations format.",
       "created_at": "2026-05-19T15:03:40.612283Z",
       "analyzed_at": "2026-05-19T00:00:00Z",
-      "related": []
+      "related": [
+        {
+          "channel": "Andrej Karpathy",
+          "topic": "Transformer Architecture",
+          "types": [
+            "Complementary"
+          ]
+        }
+      ]
     },
     {
       "video_id": "QzZ4VwDHAT4",
@@ -148922,7 +149035,15 @@
       "ai_analysis": "Video covers ai research with focus on AI Research, AI Research, Paper Review. Presented in research paper summaries, accessible explanations format.",
       "created_at": "2026-05-19T15:03:40.612299Z",
       "analyzed_at": "2026-05-19T00:00:00Z",
-      "related": []
+      "related": [
+        {
+          "channel": "Andrej Karpathy",
+          "topic": "LLM Optimization & Research",
+          "types": [
+            "Consistent"
+          ]
+        }
+      ]
     },
     {
       "video_id": "yzajLZXh9JU",
@@ -149839,7 +149960,15 @@
       "ai_analysis": "Video covers ai research with focus on AI Research, AI Research, Paper Review. Presented in research paper summaries, accessible explanations format.",
       "created_at": "2026-05-19T15:03:40.612303Z",
       "analyzed_at": "2026-05-19T00:00:00Z",
-      "related": []
+      "related": [
+        {
+          "channel": "Andrej Karpathy",
+          "topic": "AI Video Generation",
+          "types": [
+            "Complementary"
+          ]
+        }
+      ]
     },
     {
       "video_id": "Xf_v62TQOx4",
@@ -150744,7 +150873,15 @@
       "ai_analysis": "Video covers neural networks with focus on Neural Networks, AI Research, AI Research. Presented in research paper summaries, accessible explanations format.",
       "created_at": "2026-05-19T15:03:40.612306Z",
       "analyzed_at": "2026-05-19T00:00:00Z",
-      "related": []
+      "related": [
+        {
+          "channel": "Andrej Karpathy",
+          "topic": "Neural Network Architecture",
+          "types": [
+            "Complementary"
+          ]
+        }
+      ]
     },
     {
       "video_id": "Sk9tvyRSCgY",
@@ -151861,7 +151998,15 @@
       "ai_analysis": "Video covers transformers with focus on Transformers, AI Research, AI Agents. Presented in research paper summaries, accessible explanations format.",
       "created_at": "2026-05-19T15:03:40.612308Z",
       "analyzed_at": "2026-05-19T00:00:00Z",
-      "related": []
+      "related": [
+        {
+          "channel": "Andrej Karpathy",
+          "topic": "AI Agents & Autonomous Systems",
+          "types": [
+            "Complementary"
+          ]
+        }
+      ]
     },
     {
       "video_id": "Ersv1ogj7Jo",
@@ -152778,7 +152923,15 @@
       "ai_analysis": "Video covers ai research with focus on AI Research, AI Benchmarks, AI Research. Presented in research paper summaries, accessible explanations format.",
       "created_at": "2026-05-19T15:03:40.612310Z",
       "analyzed_at": "2026-05-19T00:00:00Z",
-      "related": []
+      "related": [
+        {
+          "channel": "Andrej Karpathy",
+          "topic": "LLM Reasoning & Safety",
+          "types": [
+            "Complementary"
+          ]
+        }
+      ]
     },
     {
       "video_id": "mFSFvKquXwI",
@@ -153599,7 +153752,15 @@
       "ai_analysis": "Video covers ai research with focus on AI Research, AI Research, Paper Review. Presented in research paper summaries, accessible explanations format.",
       "created_at": "2026-05-19T15:03:40.612313Z",
       "analyzed_at": "2026-05-19T00:00:00Z",
-      "related": []
+      "related": [
+        {
+          "channel": "Andrej Karpathy",
+          "topic": "AI Architecture Innovation",
+          "types": [
+            "Complementary"
+          ]
+        }
+      ]
     }
   ],
   "channels": {
