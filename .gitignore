@@ -1,0 +1,19 @@
+# 字幕文件（可重新下载）
+subtitles/
+subs/
+
+# 敏感文件
+*cookies*
+*.secret
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# 编辑器
+.vscode/
+.idea/
+*.swp

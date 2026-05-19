@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Research Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0b;
+            --bg-secondary: #111113;
+            --bg-card: #161618;
+            --bg-card-hover: #1a1a1d;
+            --bg-field: #0d0d0e;
+            --border-color: #2a2a2e;
+            --border-highlight: #3a3a3e;
+            --text-primary: #e8e8ea;
+            --text-secondary: #888890;
+            --text-muted: #55555a;
+            --accent-blue: #4a9eff;
+            --accent-purple: #a78bfa;
+            --accent-green: #34d399;
+            --accent-orange: #fb923c;
+            --accent-pink: #f472b6;
+            --accent-red: #f87171;
+            --channel-3blue: #3b82f6;
+            --channel-karpathy: #10b981;
+            --channel-papers: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Serif SC', serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 11, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-subtitle {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.75rem 0;
+        }
+
+        .stats-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+        }
+
+        .stat-value {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .stat-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        /* Filter Tabs */
+        .filter-tabs {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 1rem;
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 0.4rem 0.85rem;
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .filter-tab:hover {
+            border-color: var(--border-highlight);
+            color: var(--text-primary);
+        }
+
+        .filter-tab.active {
+            background: var(--text-primary);
+            border-color: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
+        .filter-tab .count {
+            background: var(--bg-card);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.6rem;
+        }
+
+        .filter-tab.active .count {
+            background: rgba(0,0,0,0.3);
+        }
+
+        /* View Toggle */
+        .view-toggle {
+            margin-left: auto;
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .view-btn {
+            padding: 0.4rem 0.85rem;
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .view-btn:hover, .view-btn.active {
+            background: var(--text-primary);
+            border-color: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
+        /* Video Grid */
+        .video-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .video-grid.compact {
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        }
+
+        /* Video Card */
+        .video-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: fadeIn 0.4s ease backwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .video-card:hover {
+            border-color: var(--border-highlight);
+            background: var(--bg-card-hover);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+        }
+
+        /* Card Header */
+        .card-header {
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card-header-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .channel-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 5px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+            color: white;
+        }
+
+        .video-title {
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--text-primary);
+        }
+
+        /* Card Body */
+        .card-body {
+            padding: 1.25rem;
+        }
+
+        /* Field Group */
+        .field-group {
+            margin-bottom: 1rem;
+        }
+
+        .field-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .field-label {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .field-value {
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .field-value.empty {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Speaker Info */
+        .speaker-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .speaker-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+        }
+
+        /* Tags */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .tag {
+            padding: 0.25rem 0.5rem;
+            background: var(--bg-field);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .tag.primary {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+            background: rgba(74, 158, 255, 0.1);
+        }
+
+        /* Connection Badge */
+        .connection-info {
+            background: var(--bg-field);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.75rem;
+        }
+
+        .connection-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .connection-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .connection-item {
+            padding: 0.6rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+        }
+
+        .connection-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .connection-channel {
+            color: var(--accent-purple);
+            font-size: 0.8rem;
+        }
+
+        .connection-topic {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+        }
+
+        .connection-types {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .connection-type {
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.65rem;
+            font-weight: 500;
+        }
+
+        .type-互补 { background: rgba(52, 211, 153, 0.2); color: var(--accent-green); }
+        .type-延续 { background: rgba(74, 158, 255, 0.2); color: var(--accent-blue); }
+        .type-一致 { background: rgba(167, 139, 250, 0.2); color: var(--accent-purple); }
+        .type-对立 { background: rgba(248, 113, 113, 0.2); color: var(--accent-red); }
+        .type-深入 { background: rgba(251, 146, 60, 0.2); color: var(--accent-orange); }
+
+        /* Transcript Section */
+        .transcript-section {
+            margin-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .transcript-toggle {
+            width: 100%;
+            padding: 0.75rem 1.25rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            transition: color 0.2s;
+        }
+
+        .transcript-toggle:hover {
+            color: var(--text-primary);
+        }
+
+        .transcript-toggle .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .transcript-toggle.open .arrow {
+            transform: rotate(180deg);
+        }
+
+        .transcript-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .transcript-content.open {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .transcript-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.75rem;
+            background: var(--bg-field);
+        }
+
+        .transcript-table .t-time {
+            padding: 0.35rem 0.6rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-blue);
+            font-weight: 500;
+            width: 50px;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+
+        .transcript-table .t-text {
+            padding: 0.35rem 0.6rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-color);
+            line-height: 1.5;
+        }
+
+        .transcript-table tr:last-child .t-time,
+        .transcript-table tr:last-child .t-text {
+            border-bottom: none;
+        }
+
+        .transcript-table tr:hover .t-text {
+            color: var(--text-primary);
+        }
+
+        /* AI Analysis */
+        .ai-analysis {
+            background: rgba(167, 139, 250, 0.08);
+            border: 1px solid rgba(167, 139, 250, 0.15);
+            border-radius: 6px;
+            padding: 0.6rem 0.85rem;
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Card Footer */
+        .card-footer {
+            padding: 1rem 1.25rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-secondary);
+        }
+
+        .video-meta {
+            display: flex;
+            gap: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 500;
+        }
+
+        .status-analyzed {
+            background: rgba(52, 211, 153, 0.15);
+            color: var(--accent-green);
+        }
+
+        .status-pending {
+            background: rgba(138, 138, 142, 0.15);
+            color: var(--text-muted);
+        }
+
+        .watch-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.85rem;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .watch-btn:hover {
+            background: var(--accent-blue);
+            transform: scale(1.02);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+            grid-column: 1 / -1;
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* Channel Colors */
+        .channel-3blue { background: linear-gradient(135deg, var(--channel-3blue), #2563eb); }
+        .channel-karpathy { background: linear-gradient(135deg, var(--channel-karpathy), #059669); }
+        .channel-papers { background: linear-gradient(135deg, var(--channel-papers), #d97706); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem 1rem 4rem;
+            }
+
+            .video-grid.compact {
+                grid-template-columns: 1fr;
+            }
+
+            .header-inner {
+                padding: 0 1rem;
+            }
+
+            .stats-inner, .filter-tabs {
+                padding: 0 1rem 1rem;
+            }
+
+            .view-toggle {
+                width: 100%;
+                margin-top: 0.75rem;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--border-highlight);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">
+                <div class="logo-icon">LLM</div>
+                <div>
+                    <div class="logo-text">Research Tracker</div>
+                    <div class="logo-subtitle">YouTube 订阅分析系统</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="stats-bar">
+        <div class="stats-inner">
+            <div class="stat-item">
+                <span class="stat-label">总视频</span>
+                <span class="stat-value" id="total-videos">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">已分析</span>
+                <span class="stat-value" id="analyzed-videos">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-dot" style="background: var(--accent-green);"></span>
+                <span class="stat-label">活跃频道</span>
+                <span class="stat-value">3</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">分析率</span>
+                <span class="stat-value" id="analysis-rate">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-tabs" id="filter-tabs">
+        <button class="filter-tab active" data-filter="all">
+            全部 <span class="count" id="count-all">0</span>
+        </button>
+        <button class="filter-tab" data-filter="3Blue1Brown">
+            <span class="stat-dot" style="background: var(--channel-3blue);"></span>
+            3Blue1Brown <span class="count" id="count-3blue">0</span>
+        </button>
+        <button class="filter-tab" data-filter="Andrej Karpathy">
+            <span class="stat-dot" style="background: var(--channel-karpathy);"></span>
+            Andrej Karpathy <span class="count" id="count-karpathy">0</span>
+        </button>
+        <button class="filter-tab" data-filter="Two Minute Papers">
+            <span class="stat-dot" style="background: var(--channel-papers);"></span>
+            Two Minute Papers <span class="count" id="count-papers">0</span>
+        </button>
+        <div class="view-toggle">
+            <button class="view-btn active" data-view="full">完整</button>
+            <button class="view-btn" data-view="compact">精简</button>
+        </div>
+    </div>
+
+    <main class="video-grid" id="video-grid"></main>
+
+    <script>
+        // 数据加载
+        async function loadData() {
+            try {
+                const response = await fetch('videos.json?t=' + Date.now());
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('加载数据失败:', error);
+                return { videos: [], channels: {} };
+            }
+        }
+
+        // 频道信息
+        const channelInfo = {
+            '3Blue1Brown': { class: 'channel-3blue', short: '3B1' },
+            'Andrej Karpathy': { class: 'channel-karpathy', short: 'AK' },
+            'Two Minute Papers': { class: 'channel-papers', short: '2MP' }
+        };
+
+        // 格式化日期
+        function formatDate(dateString) {
+            if (!dateString) return '未知';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' });
+        }
+
+        // 相对时间
+        function relativeDate(dateString) {
+            if (!dateString) return '';
+            const date = new Date(dateString);
+            const now = new Date();
+            const diff = now - date;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+            if (days === 0) return '今天';
+            if (days === 1) return '昨天';
+            if (days < 7) return `${days}天前`;
+            return `${Math.floor(days / 7)}周前`;
+        }
+
+        // 渲染完整卡片
+        function renderFullCard(video, index) {
+            const info = channelInfo[video.channel_name] || { class: '', short: '??' };
+            const hasAnalysis = video.analyzed_at;
+            const createdAt = relativeDate(video.created_at);
+
+            // 主主题标签
+            const primaryTag = video.primary_topic
+                ? `<span class="tag primary">${video.primary_topic}</span>`
+                : `<span class="tag" style="color:var(--text-muted)">未分类</span>`;
+
+            // 具体话题标签
+            const specificTags = (video.specific_topics || [])
+                .map(t => `<span class="tag">${t}</span>`)
+                .join('');
+
+            // 关联信息（多组）
+            let connectionHtml = '';
+            if (video.related && video.related.length > 0) {
+                const relItems = video.related.map(rel => {
+                    const types = (rel.types || [])
+                        .map(t => `<span class="connection-type type-${t}">${t}</span>`)
+                        .join('');
+                    return `
+                        <div class="connection-item">
+                            <div class="connection-channel">📺 ${rel.channel}</div>
+                            <div class="connection-topic">🏷️ ${rel.topic}</div>
+                            ${types ? `<div class="connection-types">${types}</div>` : ''}
+                        </div>
+                    `;
+                }).join('');
+
+                connectionHtml = `
+                    <div class="field-group">
+                        <div class="field-label">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                            主题关联
+                        </div>
+                        <div class="connection-info">${relItems}</div>
+                    </div>
+                `;
+            }
+
+            // 内容摘要（精简分析）
+            let analysisHtml = '';
+            if (video.ai_analysis) {
+                analysisHtml = `
+                    <div class="field-group">
+                        <div class="field-label">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                            AI 分析
+                        </div>
+                        <div class="ai-analysis">${video.ai_analysis}</div>
+                    </div>`;
+            }
+
+            // 字幕（可折叠，懒加载）
+            let transcriptHtml = '';
+            if (video.transcript && video.transcript.length > 0) {
+                transcriptHtml = `
+                    <div class="transcript-section">
+                        <button class="transcript-toggle" onclick="toggleTranscript(this, ${index})">
+                            <span>📄 字幕 (${video.transcript.length} 条)</span>
+                            <span class="arrow">▼</span>
+                        </button>
+                        <div class="transcript-content" id="tc-${index}"></div>
+                    </div>`;
+            }
+
+            return `
+                <article class="video-card" style="animation-delay: ${index * 50}ms" data-channel="${video.channel_name}">
+                    <div class="card-header">
+                        <div class="card-header-top">
+                            <div class="channel-badge ${info.class}">${info.short}</div>
+                            <div style="flex:1">
+                                <div class="video-title">${video.video_title || '未命名视频'}</div>
+                            </div>
+                        </div>
+                        <a href="${video.video_link}" target="_blank" style="color:var(--text-muted);font-size:0.7rem;font-family:'JetBrains Mono',monospace;text-decoration:none;">
+                            ${video.video_id} ↗
+                        </a>
+                    </div>
+
+                    <div class="card-body">
+                        <!-- 演讲者 -->
+                        <div class="field-group">
+                            <div class="field-label">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                                演讲者
+                            </div>
+                            <div class="field-value ${video.speaker_name ? '' : 'empty'}">
+                                ${video.speaker_name || '待填写'}
+                            </div>
+                        </div>
+
+                        <!-- 主题分类 -->
+                        <div class="field-group">
+                            <div class="field-label">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                                主题分类
+                            </div>
+                            <div class="tags-container">
+                                ${primaryTag}${specificTags}
+                            </div>
+                        </div>
+
+                        <!-- AI 分析 -->
+                        ${analysisHtml}
+
+                        <!-- 主题关联 -->
+                        ${connectionHtml}
+                    </div>
+
+                    ${transcriptHtml}
+
+                    <div class="card-footer">
+                        <div class="video-meta">
+                            <span class="meta-item">📅 ${createdAt}</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:0.75rem;">
+                            <span class="status-badge ${hasAnalysis ? 'status-analyzed' : 'status-pending'}">
+                                ${hasAnalysis ? '✓ 已分析' : '○ 待分析'}
+                            </span>
+                            <a href="${video.video_link}" target="_blank" class="watch-btn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                观看
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        // 渲染精简卡片
+        function renderCompactCard(video, index) {
+            const info = channelInfo[video.channel_name] || { class: '', short: '??' };
+            const hasAnalysis = video.analyzed_at;
+            const createdAt = relativeDate(video.created_at);
+
+            return `
+                <article class="video-card" style="animation-delay: ${index * 50}ms" data-channel="${video.channel_name}">
+                    <div class="card-header">
+                        <div class="card-header-top">
+                            <div class="channel-badge ${info.class}">${info.short}</div>
+                            <div style="flex:1">
+                                <div class="video-title">${video.video_title || '未命名视频'}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="tags-container" style="margin-bottom:0.5rem">
+                            ${video.primary_topic ? `<span class="tag primary">${video.primary_topic}</span>` : ''}
+                            ${(video.specific_topics || []).slice(0,2).map(t => `<span class="tag">${t}</span>`).join('')}
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="video-meta">
+                            <span>📅 ${createdAt}</span>
+                            ${video.speaker_name ? `<span>👤 ${video.speaker_name}</span>` : ''}
+                        </div>
+                        <div style="display:flex;align-items:center;gap:0.75rem;">
+                            <span class="status-badge ${hasAnalysis ? 'status-analyzed' : 'status-pending'}">
+                                ${hasAnalysis ? '✓' : '○'}
+                            </span>
+                            <a href="${video.video_link}" target="_blank" class="watch-btn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        // 更新统计数据
+        function updateStats(videos) {
+            const analyzed = videos.filter(v => v.analyzed_at);
+            const rate = videos.length ? Math.round((analyzed.length / videos.length) * 100) : 0;
+
+            document.getElementById('total-videos').textContent = videos.length;
+            document.getElementById('analyzed-videos').textContent = analyzed.length;
+            document.getElementById('analysis-rate').textContent = rate + '%';
+
+            // 按频道统计
+            const channelCounts = {};
+            videos.forEach(v => {
+                channelCounts[v.channel_name] = (channelCounts[v.channel_name] || 0) + 1;
+            });
+
+            document.getElementById('count-all').textContent = videos.length;
+            document.getElementById('count-3blue').textContent = channelCounts['3Blue1Brown'] || 0;
+            document.getElementById('count-karpathy').textContent = channelCounts['Andrej Karpathy'] || 0;
+            document.getElementById('count-papers').textContent = channelCounts['Two Minute Papers'] || 0;
+        }
+
+        // 字幕懒加载
+        function toggleTranscript(btn, index) {
+            const content = document.getElementById('tc-' + index);
+            if (content.dataset.loaded) {
+                btn.classList.toggle('open');
+                content.classList.toggle('open');
+                return;
+            }
+            const video = allVideos.filter(v => currentFilter === 'all' || v.channel_name === currentFilter)[index];
+            if (!video || !video.transcript) return;
+            const rows = video.transcript.map(item => `
+                <tr>
+                    <td class="t-time">${item.time}</td>
+                    <td class="t-text">${item.text || item.content || ''}</td>
+                </tr>
+            `).join('');
+            content.innerHTML = '<table class="transcript-table">' + rows + '</table>';
+            content.dataset.loaded = '1';
+            btn.classList.add('open');
+            content.classList.add('open');
+        }
+
+        // 过滤和渲染
+        let currentFilter = 'all';
+        let currentView = 'full';
+        let allVideos = [];
+
+        function renderVideos() {
+            const grid = document.getElementById('video-grid');
+
+            const filtered = currentFilter === 'all'
+                ? allVideos
+                : allVideos.filter(v => v.channel_name === currentFilter);
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">📭</div>
+                        <div>该频道暂无视频</div>
+                    </div>
+                `;
+                return;
+            }
+
+            const renderFn = currentView === 'full' ? renderFullCard : renderCompactCard;
+            grid.innerHTML = filtered.map((v, i) => renderFn(v, i)).join('');
+        }
+
+        function filterVideos(filter) {
+            currentFilter = filter;
+            renderVideos();
+        }
+
+        // 初始化
+        async function init() {
+            const data = await loadData();
+            allVideos = data.videos || [];
+
+            updateStats(allVideos);
+            renderVideos();
+
+            // 过滤器点击
+            document.getElementById('filter-tabs').addEventListener('click', (e) => {
+                const tab = e.target.closest('.filter-tab');
+                if (!tab) return;
+
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                filterVideos(tab.dataset.filter);
+            });
+
+            // 视图切换
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    currentView = btn.dataset.view;
+                    document.getElementById('video-grid').classList.toggle('compact', currentView === 'compact');
+                    renderVideos();
+                });
+            });
+        }
+
+        init();
+    </script>
+</body>
+</html>
