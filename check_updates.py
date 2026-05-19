@@ -12,6 +12,7 @@ from pathlib import Path
 
 
 SUBSCRIPTIONS_FILE = Path(__file__).parent / "subscriptions.json"
+VIDEOS_FILE = Path(__file__).parent / "videos.json"
 
 
 def load_subscriptions():
@@ -100,10 +101,20 @@ def main():
     print("YouTube 订阅更新检查")
     print("=" * 50)
 
-    data = load_subscriptions()
+    # 加载 subscriptions.json 和 videos.json
+    subs_data = load_subscriptions()
+
+    # 获取已存在的视频 ID
+    try:
+        with open(VIDEOS_FILE, 'r') as f:
+            videos_data = json.load(f)
+        existing_ids = {v['video_id'] for v in videos_data.get('videos', [])}
+    except:
+        existing_ids = set()
+
     new_videos = []
 
-    for channel in data['channels']:
+    for channel in subs_data['channels']:
         latest = check_channel(channel)
 
         if latest:
@@ -111,30 +122,27 @@ def main():
             channel['last_seen_video_id'] = latest['video_id']
             channel['last_check_time'] = datetime.utcnow().isoformat() + 'Z'
 
-            # 检查是否已经分析过
-            already_analyzed = any(
-                v['video_id'] == latest['video_id']
-                for v in data['analyzed_videos']
-            )
-
-            if not already_analyzed:
+            # 检查是否已经添加过
+            if latest['video_id'] not in existing_ids:
                 new_videos.append({
                     'channel': channel['name'],
                     'channel_id': channel['channel_id'],
                     **latest
                 })
 
-    # 存回文件
-    save_subscriptions(data)
+    # 存回 subscriptions.json
+    save_subscriptions(subs_data)
 
     # 报告结果
     print("\n" + "=" * 50)
     if new_videos:
-        print(f"🎉 发现 {len(new_videos)} 个新视频需要分析：")
+        print(f"🎉 发现 {len(new_videos)} 个新视频：")
         for v in new_videos:
             print(f"\n  - {v['channel']}: {v['title']}")
             print(f"    URL: {v['url']}")
-        print("\n💡 下一步：用 yt-dlp 获取这些视频的字幕")
+        print("\n💡 运行添加新视频:")
+        for v in new_videos:
+            print(f"   python3 add_video.py '{v['url']}'")
     else:
         print("✓ 所有频道没有新视频")
     print("=" * 50)

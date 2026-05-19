@@ -3,17 +3,23 @@
     {
       "channel_id": "UCXUPKJO5MZQN11PqgIvyuvQ",
       "name": "Andrej Karpathy",
-      "rss_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCXUPKJO5MZQN11PqgIvyuvQ"
+      "rss_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCXUPKJO5MZQN11PqgIvyuvQ",
+      "last_seen_video_id": "EWvNQjAaOHw",
+      "last_check_time": "2026-05-19T15:01:22.137905Z"
     },
     {
       "channel_id": "UCYO_jab_esuFRV4b17AJtAw",
       "name": "3Blue1Brown",
-      "rss_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCYO_jab_esuFRV4b17AJtAw"
+      "rss_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCYO_jab_esuFRV4b17AJtAw",
+      "last_seen_video_id": "QLu_ZsRc_G0",
+      "last_check_time": "2026-05-19T15:01:22.438643Z"
     },
     {
       "channel_id": "UCbfYPyITQ-7l4upoX8nvctg",
       "name": "Two Minute Papers",
-      "rss_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCbfYPyITQ-7l4upoX8nvctg"
+      "rss_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCbfYPyITQ-7l4upoX8nvctg",
+      "last_seen_video_id": "4wC8hnQawiA",
+      "last_check_time": "2026-05-19T15:01:22.726542Z"
     }
   ]
 }
