@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
 """
 检查 YouTube 频道是否有新视频
-只读取 RSS，不调用 yt-dlp（除非有新视频需要分析）
+使用 yt-dlp 获取频道最新视频（RSS 已失效）
 """
 
 import json
-import urllib.request
-import xml.etree.ElementTree as ET
+import subprocess
+import os
 from datetime import datetime
 from pathlib import Path
 
 
 SUBSCRIPTIONS_FILE = Path(__file__).parent / "subscriptions.json"
 VIDEOS_FILE = Path(__file__).parent / "videos.json"
+COOKIES_FILE = Path(__file__).parent / ".secrets/youtube-cookies.txt"
+PROXY = os.environ.get("HTTP_PROXY", "http://127.0.0.1:7890")
 
 
 def load_subscriptions():
@@ -27,73 +29,75 @@ def save_subscriptions(data):
         json.dump(data, f, indent=2, ensure_ascii=False)
 
 
-def fetch_latest_video(rss_url):
+def fetch_latest_video(channel_id):
     """
-    从 RSS 获取最新视频信息
-    只解析第一个 <entry>，非常轻量
+    用 yt-dlp 获取频道最新视频（flat-playlist，不下载）
+    返回 dict 或 None
     """
-    with urllib.request.urlopen(rss_url) as response:
-        xml_text = response.read().decode('utf-8')
-
-    root = ET.fromstring(xml_text)
-
-    # YouTube RSS uses namespaces
-    ns = {
-        '': 'http://www.w3.org/2005/Atom',
-        'yt': 'http://www.youtube.com/xml/schemas/2015',
-        'media': 'http://search.yahoo.com/mrss/'
-    }
-
-    # 只获取第一个 entry（最新视频）
-    entry = root.find('entry', ns)
-    if entry is None:
-        return None
-
-    video_id = entry.find('yt:videoId', ns).text
-    title = entry.find('title', ns).text
-    published = entry.find('published', ns).text
-    link = entry.find('link', ns).get('href')
-
-    return {
-        'video_id': video_id,
-        'title': title,
-        'published': published,
-        'url': link
-    }
+    url = f"https://www.youtube.com/channel/{channel_id}"
+    cmd = [
+        "yt-dlp",
+        "--flat-playlist",
+        "--print", "%(id)s\t%(title)s\t%(upload_date)s",
+        "--playlist-end", "1",
+        "--proxy", PROXY,
+        "--cookies", str(COOKIES_FILE),
+        "--no-warnings",
+        url
+    ]
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+        if result.returncode != 0:
+            stderr = result.stderr.strip()
+            raise Exception(f"yt-dlp exit {result.returncode}: {stderr}")
+        line = result.stdout.strip()
+        if not line:
+            return None
+        parts = line.split("\t", 2)
+        video_id = parts[0]
+        title = parts[1] if len(parts) > 1 else "Unknown"
+        upload_date = parts[2] if len(parts) > 2 else ""
+        return {
+            "video_id": video_id,
+            "title": title,
+            "published": upload_date,
+            "url": f"https://www.youtube.com/watch?v={video_id}"
+        }
+    except subprocess.TimeoutExpired:
+        raise Exception("yt-dlp timeout (30s)")
 
 
 def check_channel(channel_data):
     """检查单个频道是否有新视频"""
     print(f"\n📺 检查: {channel_data['name']}")
-    print(f"   RSS: {channel_data['rss_url']}")
 
     try:
-        latest = fetch_latest_video(channel_data['rss_url'])
+        latest = fetch_latest_video(channel_data['channel_id'])
     except Exception as e:
         print(f"   ❌ 错误: {e}")
-        return None
+        return "error", None
 
     if latest is None:
         print("   ❌ 无法获取视频信息")
-        return None
+        return "error", None
 
     print(f"   最新视频: {latest['title']}")
     print(f"   视频 ID: {latest['video_id']}")
-    print(f"   发布时间: {latest['published']}")
+    print(f"   发布日期: {latest['published']}")
 
     # 检查是否有新视频
     last_seen = channel_data.get('last_seen_video_id')
 
     if last_seen is None:
         print("   ✨ 首次检查，记录此视频")
-        return latest
+        return "new", latest
 
     if last_seen == latest['video_id']:
         print("   ✓ 没有新视频")
-        return None
+        return "ok", None
 
     print(f"   🆕 发现新视频！上次的: {last_seen}")
-    return latest
+    return "new", latest
 
 
 def main():
@@ -101,7 +105,6 @@ def main():
     print("YouTube 订阅更新检查")
     print("=" * 50)
 
-    # 加载 subscriptions.json 和 videos.json
     subs_data = load_subscriptions()
 
     # 获取已存在的视频 ID
@@ -109,28 +112,35 @@ def main():
         with open(VIDEOS_FILE, 'r') as f:
             videos_data = json.load(f)
         existing_ids = {v['video_id'] for v in videos_data.get('videos', [])}
-    except:
+    except Exception:
         existing_ids = set()
 
     new_videos = []
+    errors = []
+    ok_channels = []
 
     for channel in subs_data['channels']:
-        latest = check_channel(channel)
+        status, latest = check_channel(channel)
+
+        if status == "error":
+            errors.append(channel['name'])
+            continue
 
         if latest:
-            # 更新 last_seen
             channel['last_seen_video_id'] = latest['video_id']
             channel['last_check_time'] = datetime.utcnow().isoformat() + 'Z'
 
-            # 检查是否已经添加过
             if latest['video_id'] not in existing_ids:
                 new_videos.append({
                     'channel': channel['name'],
                     'channel_id': channel['channel_id'],
                     **latest
                 })
+            else:
+                ok_channels.append(f"{channel['name']} — 最新视频「{latest['title']}」，无更新")
+        else:
+            ok_channels.append(f"{channel['name']} — 无变化")
 
-    # 存回 subscriptions.json
     save_subscriptions(subs_data)
 
     # 报告结果
@@ -144,10 +154,14 @@ def main():
         for v in new_videos:
             print(f"   python3 add_video.py '{v['url']}'")
     else:
-        print("✓ 所有频道没有新视频")
+        print("✓ 没有发现新视频。")
     print("=" * 50)
 
-    return new_videos
+    return {
+        "new_videos": new_videos,
+        "errors": errors,
+        "ok_channels": ok_channels,
+    }
 
 
 if __name__ == '__main__':

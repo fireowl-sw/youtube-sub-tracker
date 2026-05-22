@@ -1,6 +1,24 @@
 {
   "videos": [
     {
+      "video_id": "LpXhy2iiaQE",
+      "video_title": "DeepSeek's New AI Is A Game Changer",
+      "video_link": "https://www.youtube.com/watch?v=LpXhy2iiaQE",
+      "channel_name": "Two Minute Papers",
+      "speaker_name": "Károly Zsolnai-Fehér",
+      "primary_topic": "DeepSeek AI",
+      "specific_topics": [
+        "DeepSeek",
+        "AI",
+        "Game Changer"
+      ],
+      "transcript": [],
+      "ai_analysis": "Two Minute Papers covers a new DeepSeek AI release described as a game changer in the AI landscape.",
+      "created_at": "2026-05-22T14:00:39.682756Z",
+      "analyzed_at": null,
+      "related": []
+    },
+    {
       "video_id": "4nQnhjimB4Y",
       "video_title": "OpenAI's ChatGPT 5.5 Instant: The Good, The Bad And The Insane",
       "video_link": "https://www.youtube.com/watch?v=4nQnhjimB4Y",
